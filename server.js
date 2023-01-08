@@ -56,7 +56,7 @@ const writeToFile = (destination, content) =>
   );
 
 const readAndAppend = (content, file) => {
-    fs.readFile(file, 'utf8', (err, data) => {
+    fs.readFileSync(file, 'utf8', (err, data) => {
       if (err) {
         console.error(err);
       } else {
