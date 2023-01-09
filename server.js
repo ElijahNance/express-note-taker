@@ -7,7 +7,7 @@ const util = require('util');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -50,11 +50,13 @@ app.get('/*', (req, res) => {
 
 const readFromFile = util.promisify(fs.readFile);
 
+
 const writeToFile = (destination, content) =>
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(`\nData written to ${destination}`)
   );
 
+  
 const readAndAppend = (content, file) => {
     fs.readFileSync(file, 'utf8', (err, data) => {
       if (err) {
